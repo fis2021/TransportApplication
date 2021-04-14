@@ -3,6 +3,7 @@ package org.loose.fis.transport.application.services;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
+import org.loose.fis.transport.application.exceptions.AccountExists;
 import org.loose.fis.transport.application.exceptions.CouldNotWriteUsersException;
 import org.loose.fis.transport.application.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.transport.application.model.User;
@@ -31,6 +32,12 @@ public class UserService {
 
         users = objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<User>>() {
         });
+    }
+    public static void checkUsernameAndPassword(String username,String password) throws AccountExists {
+        for (User user : users) {
+            if (Objects.equals(username, user.getUsername())&&Objects.equals(encodePassword(username,password), user.getPassword()))
+                throw new AccountExists(username);
+        }
     }
 
     public static void addUser(String username, String password, String role, String name, String address, String email) throws UsernameAlreadyExistsException {

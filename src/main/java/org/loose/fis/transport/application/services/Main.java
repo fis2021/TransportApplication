@@ -18,9 +18,9 @@ public class Main extends Application {
 
         UserService.loadUsersFromFile();
 
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Transport Application");
-        primaryStage.setScene(new Scene(root, 400, 400));
+        primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
 }
