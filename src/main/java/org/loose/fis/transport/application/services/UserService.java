@@ -39,7 +39,6 @@ public class UserService {
     public static void addUser(String username, String password, String role, String name, String address, String email) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
         userRepository.insert(new User(username, encodePassword(username, password), role, name, address, email));
-        //persistUsers();
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
@@ -48,15 +47,6 @@ public class UserService {
                 throw new UsernameAlreadyExistsException(username);
         }
     }
-
-    /*private static void persistUsers() {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(USERS_PATH.toFile(), userRepository);
-        } catch (IOException e) {
-            throw new CouldNotWriteUsersException();
-        }
-    }*/
 
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
