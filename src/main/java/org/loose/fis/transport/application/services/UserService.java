@@ -1,8 +1,9 @@
 package org.loose.fis.transport.application.services;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.objects.ObjectRepository;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
 import org.loose.fis.transport.application.exceptions.AccountExists;
 import org.loose.fis.transport.application.exceptions.CouldNotWriteUsersException;
 import org.loose.fis.transport.application.exceptions.UsernameAlreadyExistsException;
@@ -10,31 +11,26 @@ import org.loose.fis.transport.application.model.User;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import java.util.Objects;
+
+import static org.loose.fis.transport.application.services.FileSystemService.getPathToFile;
 
 public class UserService {
 
-    private static List<User> users;
-    private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "users.json");
+    private static ObjectRepository<User> userRepository;
 
-    public static void loadUsersFromFile() throws IOException {
+    public static void initDatabase() {
+        Nitrite database = Nitrite.builder()
+                .filePath(getPathToFile("registration-example.db").toFile())
+                .openOrCreate("test", "test");
 
-        if (!Files.exists(USERS_PATH)) {
-            FileUtils.copyURLToFile(UserService.class.getClassLoader().getResource("users.json"), USERS_PATH.toFile());
-        }
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        users = objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<User>>() {
-        });
+        userRepository = database.getRepository(User.class);
     }
+
     public static void checkUsernameAndPassword(String username,String password) throws AccountExists {
-        for (User user : users) {
+        for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername())&&Objects.equals(encodePassword(username,password), user.getPassword()))
                 throw new AccountExists(username);
         }
@@ -42,23 +38,13 @@ public class UserService {
 
     public static void addUser(String username, String password, String role, String name, String address, String email) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
-        users.add(new User(username, encodePassword(username, password), role, name, address, email));
-        persistUsers();
+        userRepository.insert(new User(username, encodePassword(username, password), role, name, address, email));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
-        for (User user : users) {
+        for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
-        }
-    }
-
-    private static void persistUsers() {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(USERS_PATH.toFile(), users);
-        } catch (IOException e) {
-            throw new CouldNotWriteUsersException();
         }
     }
 
