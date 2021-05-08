@@ -42,6 +42,14 @@ public class LoginController {
         catch(AccountExists e)
         {
             loginMessage.setText("Correct");
+            try {
+                Stage stage = (Stage) loginMessage.getScene().getWindow();
+                Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("meansOfTransport.fxml"));
+                Scene scene = new Scene(viewStudentsRoot, 900, 700);
+                stage.setScene(scene);
+            } catch (IOException p) {
+                p.printStackTrace();
+            }
             return;
         }
 /*
