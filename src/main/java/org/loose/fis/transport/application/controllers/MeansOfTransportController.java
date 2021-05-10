@@ -179,6 +179,14 @@ public class MeansOfTransportController {
     }
 
     public void handleScheduleTripButton(javafx.event.ActionEvent actionEvent) {
+        try{
+            Stage stage = (Stage) TEXT.getScene().getWindow();
+            Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("CreateTrip.fxml"));
+            Scene scene = new Scene(viewStudentsRoot, 900, 900);
+            stage.setScene(scene);
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void handleSeeRequestsButton(javafx.event.ActionEvent actionEvent) {
