@@ -8,7 +8,6 @@ import org.dizitart.no2.exceptions.UniqueConstraintException;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.transport.application.exceptions.VehicleExists;
 import org.loose.fis.transport.application.model.Trip;
-import org.loose.fis.transport.application.model.Vehicle;
 
 import java.security.AccessControlException;
 import java.util.Objects;
@@ -38,6 +37,6 @@ public class TripService {
     }
     public static void addTrip(String vehicleType, int space, String date, String time, int price, String route) {
             tripRepository.insert(new Trip(vehicleType, space, date, time, price, route));
+            VehicleService.decrementAvailableVehicles(vehicleType);
     }
-
 }

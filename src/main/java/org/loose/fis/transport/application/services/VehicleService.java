@@ -53,6 +53,15 @@ public class VehicleService {
                 vehicleRepository.remove(k);
         }
     }
+    public static void decrementAvailableVehicles(String name)
+    {
+        for (Vehicle k:
+                vehicleRepository.find()) {
+            if(k.getVehicleType().equals(name)){
+                k.setAvailableVehicles(k.getAvailableVehicles()-1);
+                vehicleRepository.update(k);
+            }}
+    }
     public static ObservableList<Vehicle> Lista()
     {
         ObservableList<Vehicle>list= FXCollections.observableArrayList();;
