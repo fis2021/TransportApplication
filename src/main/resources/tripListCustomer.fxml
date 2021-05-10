@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="666.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.transport.application.controllers.CreateTripController">
+<AnchorPane prefHeight="666.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.transport.application.controllers.TripListCustomerController">
    <children>
       <TableView fx:id="table" layoutX="93.0" layoutY="180.0" prefHeight="478.0" prefWidth="682.0">
         <columns>

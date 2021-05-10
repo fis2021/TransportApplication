@@ -27,14 +27,14 @@ public class Trip {
         this.id = id;
     }
 
-    public Trip(String vehicleType, int space, String date, String time, int price, String route) {
+    /*public Trip(String vehicleType, int space, String date, String time, int price, String route) {
         this.vehicleType = vehicleType;
         this.space = space;
         this.date = date;
         this.time = time;
         this.price = price;
         this.route = route;
-    }
+    }*/
 
     public int getId() {
         return id;
