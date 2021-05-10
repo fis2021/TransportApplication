@@ -39,4 +39,12 @@ public class TripService {
             tripRepository.insert(new Trip(vehicleType, space, date, time, price, route));
             VehicleService.decrementAvailableVehicles(vehicleType);
     }
+    public static void deleteTrip(String vehicleType) {
+        for (Trip k : tripRepository.find()) {
+            if(k.getVehicleType().equals(vehicleType))
+                tripRepository.remove(k);
+        }
+    VehicleService.incrementAvailableVehicles(vehicleType);
+    }
+
 }

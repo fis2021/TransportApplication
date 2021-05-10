@@ -62,6 +62,15 @@ public class VehicleService {
                 vehicleRepository.update(k);
             }}
     }
+    public static void incrementAvailableVehicles(String name)
+    {
+        for (Vehicle k:
+                vehicleRepository.find()) {
+            if(k.getVehicleType().equals(name)){
+                k.setAvailableVehicles(k.getAvailableVehicles()+1);
+                vehicleRepository.update(k);
+            }}
+    }
     public static ObservableList<Vehicle> Lista()
     {
         ObservableList<Vehicle>list= FXCollections.observableArrayList();;

@@ -13,6 +13,7 @@ import org.loose.fis.transport.application.exceptions.VehicleExists;
 import org.loose.fis.transport.application.model.Trip;
 import org.loose.fis.transport.application.model.Vehicle;
 import org.loose.fis.transport.application.services.TripService;
+import org.loose.fis.transport.application.services.VehicleService;
 
 
 public class CreateTripController {
@@ -108,6 +109,9 @@ public class CreateTripController {
 
     @FXML
     void handleDeleteButton(ActionEvent event) {
+
+        TripService.deleteTrip(vehicleType.getText());
+        table.setItems(TripService.Lista());
 
     }
 
