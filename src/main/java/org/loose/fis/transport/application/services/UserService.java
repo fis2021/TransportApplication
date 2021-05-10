@@ -1,5 +1,7 @@
 package org.loose.fis.transport.application.services;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 
@@ -7,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.loose.fis.transport.application.exceptions.AccountExists;
 import org.loose.fis.transport.application.exceptions.CouldNotWriteUsersException;
 import org.loose.fis.transport.application.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.transport.application.model.Trip;
 import org.loose.fis.transport.application.model.User;
 
 import java.io.IOException;
@@ -27,6 +30,16 @@ public class UserService {
                 .openOrCreate("test", "test");
 
         userRepository = database.getRepository(User.class);
+    }
+
+    public static ObservableList<User> Lista()
+    {
+        ObservableList<User>list= FXCollections.observableArrayList();;
+
+        for (User k : userRepository.find()) {
+            list.add(k);
+        }
+        return list;
     }
 
     public static void checkUsernameAndPassword(String username,String password) throws AccountExists {

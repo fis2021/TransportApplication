@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="666.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.transport.application.controllers.TripListCustomerController">
+   <children>
+      <TableView fx:id="table" layoutX="93.0" layoutY="180.0" prefHeight="478.0" prefWidth="682.0">
+        <columns>
+          <TableColumn fx:id="colVehicleType" prefWidth="94.66667175292969" text="Vehicle type" />
+            <TableColumn minWidth="0.0" prefWidth="0.0" text="Tip transport" />
+            <TableColumn fx:id="colSpace" prefWidth="88.00003051757812" text="Space" />
+            <TableColumn fx:id="colDate" prefWidth="101.33331298828125" text="Date" />
+            <TableColumn fx:id="colTime" prefWidth="107.99996948242188" text="Time" />
+            <TableColumn fx:id="colPrice" prefWidth="80.66668701171875" text="Price" />
+            <TableColumn fx:id="colRoute" minWidth="0.0" prefWidth="107.3333740234375" text="Route" />
+            <TableColumn fx:id="colId" minWidth="0.0" prefWidth="118.0" text="id" />
+        </columns>
+      </TableView>
+      <Button fx:id="bookTripButton" layoutX="228.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleBookTripButton" prefHeight="45.0" prefWidth="119.0" text="Book trip" />
+      <Button fx:id="myTripsButton" layoutX="483.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleMyTripsButton" prefHeight="45.0" prefWidth="119.0" text="My trips" />
+      <Button fx:id="logoutButton" layoutX="715.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="45.0" prefWidth="119.0" text="Logout" />
+      <Button fx:id="myDeliveriesButton" layoutX="610.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleMyDeliveriesButton" prefHeight="45.0" prefWidth="119.0" text="My deliveries" />
+      <Text fx:id="TEXT" layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0" />
+      <TextField fx:id="id" layoutX="93.0" layoutY="96.0" prefHeight="25.0" prefWidth="119.0" />
+      <Label layoutX="93.0" layoutY="63.0" prefHeight="33.0" prefWidth="135.0" text="choose trip by id">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="bookDelivery" layoutX="355.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleBookDeliveryButton" prefHeight="45.0" prefWidth="119.0" text="Book delivery" />
+   </children>
+</AnchorPane>

@@ -1,5 +1,7 @@
 package org.loose.fis.transport.application.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +12,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.transport.application.exceptions.AccountExists;
 import org.loose.fis.transport.application.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.transport.application.model.Trip;
+import org.loose.fis.transport.application.model.User;
+import org.loose.fis.transport.application.services.UserService;
 
 import java.io.IOException;
 
@@ -26,6 +31,7 @@ public class LoginController {
     public void handleLoginButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
+        String r = "";
 
         if (username == null || username.isEmpty()) {
             loginMessage.setText("Please type in a username!");
@@ -42,15 +48,31 @@ public class LoginController {
         catch(AccountExists e)
         {
             loginMessage.setText("Correct");
-            try {
-                Stage stage = (Stage) loginMessage.getScene().getWindow();
-                Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("meansOfTransport.fxml"));
-                Scene scene = new Scene(viewStudentsRoot, 900, 700);
-                stage.setScene(scene);
-            } catch (IOException p) {
-                p.printStackTrace();
+            ObservableList<User>list = UserService.Lista();
+            for (User k : list) {
+                if(k.getName().equals(username))
+                    r = k.getRole();
             }
-            return;
+            if(r.equals("Company")) {
+                try {
+                    Stage stage = (Stage) loginMessage.getScene().getWindow();
+                    Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("meansOfTransport.fxml"));
+                    Scene scene = new Scene(viewStudentsRoot, 900, 700);
+                    stage.setScene(scene);
+                } catch (IOException p) {
+                    p.printStackTrace();
+                }
+            }
+            else {
+                try {
+                    Stage stage = (Stage) loginMessage.getScene().getWindow();
+                    Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("tripListCustomer.fxml"));
+                    Scene scene = new Scene(viewStudentsRoot, 900, 700);
+                    stage.setScene(scene);
+                } catch (IOException p) {
+                    p.printStackTrace();
+                }
+            }
         }
 /*
         if (username.equals("student") && password.equals("student")) {
