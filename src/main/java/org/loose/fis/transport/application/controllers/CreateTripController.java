@@ -3,17 +3,23 @@ package org.loose.fis.transport.application.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.loose.fis.transport.application.exceptions.VehicleExists;
 import org.loose.fis.transport.application.model.Trip;
 import org.loose.fis.transport.application.model.Vehicle;
 import org.loose.fis.transport.application.services.TripService;
 import org.loose.fis.transport.application.services.VehicleService;
+
+import java.io.IOException;
 
 
 public class CreateTripController {
@@ -122,7 +128,14 @@ public class CreateTripController {
 
     @FXML
     void handleEditVehiclesButton(ActionEvent event) {
-
+        try {
+            Stage stage = (Stage) TEXT.getScene().getWindow();
+            Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("meansOfTransport.fxml"));
+            Scene scene = new Scene(viewStudentsRoot, 900, 700);
+            stage.setScene(scene);
+        } catch (IOException p) {
+            p.printStackTrace();
+        }
     }
 
     @FXML
