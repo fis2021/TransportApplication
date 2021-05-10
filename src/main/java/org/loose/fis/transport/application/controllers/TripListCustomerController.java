@@ -84,10 +84,21 @@ public class TripListCustomerController {
 
     }
 
-
+    public Trip t;
     @FXML
     void handleBookTripButton(ActionEvent event) {
-
+        t = TripService.searchById(Integer.parseInt(id.getText()));
+        if(t == null) TEXT.setText("Incorrect id!");
+        else {
+            try{
+                Stage stage = (Stage) TEXT.getScene().getWindow();
+                Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("selectTrip.fxml"));
+                Scene scene = new Scene(viewStudentsRoot, 600, 400);
+                stage.setScene(scene);
+            }catch(IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML

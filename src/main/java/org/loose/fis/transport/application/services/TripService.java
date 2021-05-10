@@ -47,4 +47,12 @@ public class TripService {
     VehicleService.incrementAvailableVehicles(vehicleType);
     }
 
+    public static Trip searchById(int id){
+        for (Trip k : tripRepository.find()){
+            if(k.getId() == id)
+                return k;
+        }
+        return null;
+    }
+
 }
