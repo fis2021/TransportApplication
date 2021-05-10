@@ -140,7 +140,14 @@ public class CreateTripController {
 
     @FXML
     void handleLogoutButton(ActionEvent event) {
-
+        try{
+            Stage stage = (Stage) TEXT.getScene().getWindow();
+            Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+            Scene scene = new Scene(viewStudentsRoot, 600, 400);
+            stage.setScene(scene);
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
