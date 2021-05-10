@@ -18,7 +18,6 @@ import static org.loose.fis.transport.application.services.FileSystemService.get
 public class TripService {
 
     private static ObjectRepository<Trip> tripRepository;
-    private static int idGenerator = 1;
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
@@ -37,8 +36,7 @@ public class TripService {
         return list;
     }
     public static void addTrip(String vehicleType, int space, String date, String time, int price, String route) {
-            tripRepository.insert(new Trip(vehicleType, space, date, time, price, route, idGenerator));
-            idGenerator ++;
+            tripRepository.insert(new Trip(vehicleType, space, date, time, price, route, TripService.Lista().toArray().length + 1));
             VehicleService.decrementAvailableVehicles(vehicleType);
     }
     public static void deleteTrip(String vehicleType) {
