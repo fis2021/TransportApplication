@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="250.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.transport.application.controllers.SelectTripController">
+   <children>
+      <Button fx:id="backButton" layoutX="235.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="47.0" prefWidth="85.0" text="Back" />
+      <Button fx:id="requestSpotButton" layoutX="235.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleRequestSpotButton" prefHeight="47.0" prefWidth="85.0" text="Request spot" />
+      <TextArea fx:id="textArea" layoutX="14.0" layoutY="19.0" prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
