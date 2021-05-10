@@ -1,6 +1,7 @@
 package org.loose.fis.transport.application.controllers;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -8,10 +9,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import org.loose.fis.transport.application.exceptions.VehicleExists;
 import org.loose.fis.transport.application.model.Trip;
+import org.loose.fis.transport.application.model.Vehicle;
 import org.loose.fis.transport.application.services.TripService;
 
-import java.awt.event.ActionEvent;
 
 public class CreateTripController {
     @FXML
@@ -87,8 +89,21 @@ public class CreateTripController {
     }
 
     @FXML
-    void handleAddButton(ActionEvent event) {
-
+    public void handleAddButton(ActionEvent event) {
+        try {
+            TripService.addTrip(vehicleType.getText(), Integer.parseInt(space.getText()), date.getText(), time.getText(), Integer.parseInt(price.getText()),route.getText());
+            colVehicleType.setCellValueFactory(new PropertyValueFactory<Trip,String>("vehicleType"));
+            colDate.setCellValueFactory(new PropertyValueFactory<Trip,String>("date"));
+            colSpace.setCellValueFactory(new PropertyValueFactory<Trip,Integer>("space"));
+            colRoute.setCellValueFactory(new PropertyValueFactory<Trip,String>("route"));
+            colTime.setCellValueFactory(new PropertyValueFactory<Trip,String>("time"));
+            colPrice.setCellValueFactory(new PropertyValueFactory<Trip,Integer>("price"));
+            table.setItems(TripService.Lista());
+            TEXT.setText("");}
+        catch(NumberFormatException k)
+        {
+            TEXT.setText("Wrong data type");
+        }
     }
 
     @FXML
@@ -115,6 +130,5 @@ public class CreateTripController {
     void handleSeeRequestsButton(ActionEvent event) {
 
     }
-
 
 }
