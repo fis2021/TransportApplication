@@ -84,7 +84,7 @@ public class TripListCustomerController {
 
     }
 
-    public Trip t;
+    public static Trip t;
     @FXML
     void handleBookTripButton(ActionEvent event) {
         t = TripService.searchById(Integer.parseInt(id.getText()));

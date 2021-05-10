@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -21,10 +22,10 @@ public class SelectTripController {
     private Button requestSpotButton;
 
     @FXML
-    private Pane someText;
+    private Text someText;
 
     public void initialize(){
-
+        someText.setText(TripListCustomerController.t.toString() + " ");
     }
 
     public void handleBackButton(javafx.event.ActionEvent actionEvent) {
