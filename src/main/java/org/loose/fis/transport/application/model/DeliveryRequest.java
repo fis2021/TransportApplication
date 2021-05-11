@@ -11,6 +11,7 @@ public class DeliveryRequest {
     private String additionalInformation;
     private String customerName;
     private int approved;
+    private String status;
 
     public DeliveryRequest(){}
 
@@ -23,10 +24,25 @@ public class DeliveryRequest {
         this.customerName = customerName;
         this.approved = approved;
         this.id=id;
+        String a="Pending";
+        if(approved==1)
+            a="Approved";
+        if(approved==0)
+            a="Denied";
+        status=a;
     }
 
     public int getApproved() {
         return approved;
+    }
+
+    public String getStatus() {
+        String a="Pending";
+        if(approved==1)
+            a="Approved";
+        if(approved==0)
+            a="Denied";
+        return a;
     }
 
     public void setApproved(int approved) {

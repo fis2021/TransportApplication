@@ -18,7 +18,7 @@ public class TripRequestService {
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("tripRequest.db").toFile())
+                .filePath(getPathToFile("tripRequesturi.db").toFile())
                 .openOrCreate("test", "test");
 
         requestsRepository = database.getRepository(TripRequest.class);
@@ -26,7 +26,7 @@ public class TripRequestService {
 
     public static ObservableList<TripRequest> Lista()
     {
-        ObservableList<TripRequest>list= FXCollections.observableArrayList();;
+        ObservableList<TripRequest>list= FXCollections.observableArrayList();
 
         for (TripRequest k : requestsRepository.find()) {
             list.add(k);
