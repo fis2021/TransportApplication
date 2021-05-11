@@ -53,7 +53,7 @@ public class ApproveRequestsController {
         }
         if(ok==false)
             trips.setText("No trip requests");
-        ok=true;
+        ok=false;
         ObservableList<DeliveryRequest>l2= DeliveryRequestService.Lista();
         for (DeliveryRequest k:
                 l2) {
