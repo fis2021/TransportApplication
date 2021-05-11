@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.loose.fis.transport.application.services.FileSystemService;
-import org.loose.fis.transport.application.services.TripService;
-import org.loose.fis.transport.application.services.UserService;
-import org.loose.fis.transport.application.services.VehicleService;
+import org.loose.fis.transport.application.services.*;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,6 +19,7 @@ public class Main extends Application {
         UserService.initDatabase();
         VehicleService.initDatabase();
         TripService.initDatabase();
+        RequestsService.initDatabase();
 
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Transport Application");
