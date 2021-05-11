@@ -91,4 +91,16 @@ public class Trip {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Trip:\n" +
+                "vehicle type " + vehicleType + "\n" +
+                "space " + space + "\n" +
+                "date " + date + "\n" +
+                "time " + time + "\n" +
+                "price " + price + "\n" +
+                "route" + route + "\n" +
+                "id " + id + "\n" ;
+    }
 }
