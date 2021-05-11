@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.exceptions.UniqueConstraintException;
+import org.dizitart.no2.objects.Id;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.transport.application.exceptions.VehicleExists;
 import org.loose.fis.transport.application.model.Trip;
@@ -16,7 +17,6 @@ import static org.loose.fis.transport.application.services.FileSystemService.get
 
 
 public class TripService {
-
     private static ObjectRepository<Trip> tripRepository;
 
     public static void initDatabase() {

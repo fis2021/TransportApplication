@@ -39,17 +39,37 @@ public class ApproveRequestsController {
 
     public void initialize() {
         ObservableList<TripRequest>l= TripRequestService.Lista();
+        boolean ok=false;
         for (TripRequest k:
              l) {
             if(k.getApproved()==2)
             {
+                ok=true;
                 trips.setText(k.toString());
                 break;
             }
         }
+        if(ok==false)
+            trips.setText("No trip requests");
     }
 
     public void handleApproveTripButton(javafx.event.ActionEvent actionEvent) {
+        ObservableList<TripRequest>l= TripRequestService.Lista();
+        boolean ok=false;
+        TripRequestService.Approve();
+        l=TripRequestService.Lista();
+
+        for (TripRequest k:
+                l) {
+            if(k.getApproved()==2)
+            {
+                ok=true;
+                trips.setText(k.toString());
+                break;
+            }
+        }
+        if(ok==false)
+            trips.setText("No trip requests");
     }
 
     public void handleDenyTripButton(javafx.event.ActionEvent actionEvent) {
