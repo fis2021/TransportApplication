@@ -7,6 +7,7 @@ public class DeliveryRequest {
     private String deliveryAddress;
     private String additionalInformation;
     private String customerName;
+    private int approved;
 
     public DeliveryRequest(){}
 
@@ -16,6 +17,23 @@ public class DeliveryRequest {
         this.deliveryAddress = deliveryAddress;
         this.additionalInformation = additionalInformation;
         this.customerName = customerName;
+    }
+
+    public DeliveryRequest(String pickupAddress, String vehicleType, String deliveryAddress, String additionalInformation, String customerName, int approved) {
+        this.pickupAddress = pickupAddress;
+        this.vehicleType = vehicleType;
+        this.deliveryAddress = deliveryAddress;
+        this.additionalInformation = additionalInformation;
+        this.customerName = customerName;
+        this.approved = approved;
+    }
+
+    public int getApproved() {
+        return approved;
+    }
+
+    public void setApproved(int approved) {
+        this.approved = approved;
     }
 
     public String getCustomerName() {

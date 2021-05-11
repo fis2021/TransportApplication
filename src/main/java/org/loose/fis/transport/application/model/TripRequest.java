@@ -4,12 +4,27 @@ public class TripRequest {
 
     private Trip trip;
     private String name;
+    private int approved;
 
     public TripRequest(){}
 
     public TripRequest(Trip trip, String name) {
         this.trip = trip;
         this.name = name;
+    }
+
+    public TripRequest(Trip trip, String name, int approved) {
+        this.trip = trip;
+        this.name = name;
+        this.approved = approved;
+    }
+
+    public void setApproved(int approved) {
+        this.approved = approved;
+    }
+
+    public int getApproved() {
+        return approved;
     }
 
     public Trip getTrip() {

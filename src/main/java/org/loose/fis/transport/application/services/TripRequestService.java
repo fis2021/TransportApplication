@@ -34,7 +34,7 @@ public class TripRequestService {
 
     public static void addRequest(Trip r, String name) throws Exception {
         try {
-            requestsRepository.insert(new TripRequest(new Trip(r.getVehicleType(), r.getSpace(), r.getDate(), r.getTime(), r.getPrice(), r.getRoute(), r.getId()), name ));
+            requestsRepository.insert(new TripRequest(new Trip(r.getVehicleType(), r.getSpace(), r.getDate(), r.getTime(), r.getPrice(), r.getRoute(), r.getId()), name ,2));
         }catch(UniqueConstraintException e)
         {
             throw new Exception();

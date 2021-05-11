@@ -35,7 +35,7 @@ public class DeliveryRequestService {
 
     public static void addRequest(String pickupAddress, String vehicleType, String deliveryAddress, String additionalInformation, String name) throws Exception {
         try {
-            deliveriesRepository.insert(new DeliveryRequest(pickupAddress, vehicleType, deliveryAddress, additionalInformation, name));
+            deliveriesRepository.insert(new DeliveryRequest(pickupAddress, vehicleType, deliveryAddress, additionalInformation, name,2));
         }catch(UniqueConstraintException e)
         {
             throw new Exception();
