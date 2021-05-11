@@ -1,9 +1,7 @@
 package org.loose.fis.transport.application.model;
-import org.dizitart.no2.objects.Id;
 
 public class TripRequest {
 
-    @Id
     private Trip trip;
     private String name;
 

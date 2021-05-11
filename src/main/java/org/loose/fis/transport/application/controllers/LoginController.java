@@ -27,6 +27,7 @@ public class LoginController {
     @FXML
     public TextField usernameField;
 
+    public static String customerName;
     @FXML
     public void handleLoginButtonAction() {
         String username = usernameField.getText();
@@ -50,7 +51,7 @@ public class LoginController {
             loginMessage.setText("Correct");
             ObservableList<User>list = UserService.Lista();
             for (User k : list) {
-                if(k.getName().equals(username))
+                if(k.getUsername().equals(username))
                     r = k.getRole();
             }
             if(r.equals("Company")) {
@@ -65,6 +66,11 @@ public class LoginController {
             }
             else {
                 try {
+                    for (User k : list) {
+                        if(k.getUsername().equals(username))
+                            customerName = k.getName();
+                    }
+
                     Stage stage = (Stage) loginMessage.getScene().getWindow();
                     Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("tripListCustomer.fxml"));
                     Scene scene = new Scene(viewStudentsRoot, 900, 700);

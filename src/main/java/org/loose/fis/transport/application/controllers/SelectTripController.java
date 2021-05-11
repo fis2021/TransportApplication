@@ -5,12 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import org.loose.fis.transport.application.services.TripRequestService;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class SelectTripController {
@@ -39,6 +37,8 @@ public class SelectTripController {
         }
     }
 
-    public void handleRequestSpotButton(javafx.event.ActionEvent actionEvent) {
+    public void handleRequestSpotButton(javafx.event.ActionEvent actionEvent) throws Exception {
+        TripRequestService.addRequest(TripListCustomerController.t, LoginController.customerName);
+        //someText.setText(TripListCustomerController.t.toString() + " " +LoginController.customerName );
     }
 }

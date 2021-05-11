@@ -19,7 +19,7 @@ public class Main extends Application {
         UserService.initDatabase();
         VehicleService.initDatabase();
         TripService.initDatabase();
-        RequestsService.initDatabase();
+        TripRequestService.initDatabase();
 
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Transport Application");
