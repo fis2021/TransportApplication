@@ -169,7 +169,43 @@ public class AllBookingsController {
 
     @FXML
     void handleDeniedButton(ActionEvent event) {
+        colVehicleType.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("vehicleType"));
+        colSpace.setCellValueFactory(new PropertyValueFactory<TripRequest2,Integer>("space"));
+        colDate.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("date"));
+        colTime.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("time"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<TripRequest2,Integer>("price"));
+        colRoute.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("route"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("approved"));
 
+        colVehicleType2.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("vehicleType"));
+        colPickupAddress.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("pickupAddress"));
+        colDeliveryAddress.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("deliveryAddress"));
+        colAdditionalInformation.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("additionalInformation"));
+        colStatus2.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("status"));
+
+        ObservableList<TripRequest> l= TripRequestService.Lista();
+        ObservableList<TripRequest2>list= FXCollections.observableArrayList();
+        for (TripRequest k:
+                l) {
+            String a="Pending";
+            if(k.getApproved()==0)
+                a="Denied";
+            if(k.getApproved()==1)
+                a="Approved";
+            if(a.equals("Denied")){
+                list.add(new TripRequest2(k.getTrip().getVehicleType(),k.getTrip().getSpace(),k.getTrip().getDate(),k.getTrip().getTime(),k.getTrip().getPrice(),k.getTrip().getRoute(),a));
+            }}
+        table.setItems(list);
+
+        ObservableList<DeliveryRequest>l2=DeliveryRequestService.Lista();
+        ObservableList<DeliveryRequest>list2= FXCollections.observableArrayList();
+        for (DeliveryRequest x:
+                l2) {
+            if(x.getApproved()==0){
+                list2.add(x);
+            }}
+
+        table2.setItems(list2);
     }
 
     @FXML
