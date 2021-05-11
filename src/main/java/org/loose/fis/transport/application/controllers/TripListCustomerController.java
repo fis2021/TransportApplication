@@ -125,7 +125,7 @@ public class TripListCustomerController {
         try {
             Stage stage = (Stage) TEXT.getScene().getWindow();
             Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("pastDeliveries.fxml"));
-            Scene scene = new Scene(viewStudentsRoot, 600, 400);
+            Scene scene = new Scene(viewStudentsRoot, 900, 900);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -137,7 +137,7 @@ public class TripListCustomerController {
         try {
             Stage stage = (Stage) TEXT.getScene().getWindow();
             Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("pastBookings.fxml"));
-            Scene scene = new Scene(viewStudentsRoot, 600, 400);
+            Scene scene = new Scene(viewStudentsRoot, 900, 900);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

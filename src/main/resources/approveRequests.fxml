@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="294.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.transport.application.controllers.ApproveRequestsController">
+<AnchorPane prefHeight="900" prefWidth="900" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.transport.application.controllers.ApproveRequestsController">
    <children>
       <Button fx:id="approveTripButton" layoutX="235.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleApproveTripButton" prefHeight="47.0" prefWidth="85.0" text="Approve" />
       <Button fx:id="denyTripButton" layoutX="235.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleDenyTripButton" prefHeight="47.0" prefWidth="85.0" text="Deny" />
