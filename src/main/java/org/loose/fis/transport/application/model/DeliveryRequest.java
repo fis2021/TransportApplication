@@ -6,14 +6,24 @@ public class DeliveryRequest {
     private String vehicleType;
     private String deliveryAddress;
     private String additionalInformation;
+    private String customerName;
 
     public DeliveryRequest(){}
 
-    public DeliveryRequest(String pickupAddress, String vehicleType, String deliveryAddress, String additionalInformation) {
+    public DeliveryRequest(String pickupAddress, String vehicleType, String deliveryAddress, String additionalInformation, String customerName) {
         this.pickupAddress = pickupAddress;
         this.vehicleType = vehicleType;
         this.deliveryAddress = deliveryAddress;
         this.additionalInformation = additionalInformation;
+        this.customerName = customerName;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getPickupAddress() {

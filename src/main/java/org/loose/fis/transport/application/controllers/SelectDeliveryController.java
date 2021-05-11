@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.loose.fis.transport.application.services.DeliveryRequestService;
+import org.loose.fis.transport.application.services.TripRequestService;
 
 import java.io.IOException;
 
@@ -44,8 +46,16 @@ public class SelectDeliveryController {
     }
 
     @FXML
-    void handleRequestDeliveryButton(ActionEvent event) {
-
+    void handleRequestDeliveryButton(ActionEvent event) throws Exception {
+        DeliveryRequestService.addRequest(pickupAddress.getText(), vehicleType.getText(),deliveryAddress.getText(),additionalInformation.getText(), LoginController.customerName);
+        try{
+            Stage stage = (Stage) vehicleType.getScene().getWindow();
+            Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("tripListCustomer.fxml"));
+            Scene scene = new Scene(viewStudentsRoot, 600, 400);
+            stage.setScene(scene);
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

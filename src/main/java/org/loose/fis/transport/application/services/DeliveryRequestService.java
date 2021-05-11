@@ -33,9 +33,9 @@ public class DeliveryRequestService {
         return list;
     }
 
-    public static void addRequest(String pickupAddress, String vehicleType, String deliveryAddress, String additionalInformation) throws Exception {
+    public static void addRequest(String pickupAddress, String vehicleType, String deliveryAddress, String additionalInformation, String name) throws Exception {
         try {
-            deliveriesRepository.insert(new DeliveryRequest(pickupAddress, vehicleType, deliveryAddress, additionalInformation));
+            deliveriesRepository.insert(new DeliveryRequest(pickupAddress, vehicleType, deliveryAddress, additionalInformation, name));
         }catch(UniqueConstraintException e)
         {
             throw new Exception();

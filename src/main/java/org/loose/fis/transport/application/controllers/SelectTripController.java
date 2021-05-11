@@ -40,5 +40,13 @@ public class SelectTripController {
     public void handleRequestSpotButton(javafx.event.ActionEvent actionEvent) throws Exception {
         TripRequestService.addRequest(TripListCustomerController.t, LoginController.customerName);
         //someText.setText(TripListCustomerController.t.toString() + " " +LoginController.customerName );
+        try{
+            Stage stage = (Stage) someText.getScene().getWindow();
+            Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("tripListCustomer.fxml"));
+            Scene scene = new Scene(viewStudentsRoot, 600, 400);
+            stage.setScene(scene);
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 }
