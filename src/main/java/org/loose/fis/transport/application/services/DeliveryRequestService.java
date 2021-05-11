@@ -47,8 +47,17 @@ public class DeliveryRequestService {
                 deliveriesRepository.find()) {
             if(k.getApproved()==2){
                 k.setApproved(1);
+                VehicleService.decrementAvailableVehicles(k.getVehicleType());
                 deliveriesRepository.update(k); break;
             }}
     }
-
+    public static void Deny()
+    {
+        for (DeliveryRequest k:
+                deliveriesRepository.find()) {
+            if(k.getApproved()==2){
+                k.setApproved(0);
+                deliveriesRepository.update(k); break;
+            }}
+    }
 }

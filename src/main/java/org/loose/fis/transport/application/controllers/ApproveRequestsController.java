@@ -107,6 +107,22 @@ public class ApproveRequestsController {
     }
 
     public void handleDenyDelivery(javafx.event.ActionEvent actionEvent) {
+        ObservableList<DeliveryRequest>l= DeliveryRequestService.Lista();
+        boolean ok=false;
+        DeliveryRequestService.Deny();
+        l=DeliveryRequestService.Lista();
+
+        for (DeliveryRequest k:
+                l) {
+            if(k.getApproved()==2)
+            {
+                ok=true;
+                deliveries.setText(k.toString());
+                break;
+            }
+        }
+        if(ok==false)
+            deliveries.setText("No delivery requests");
     }
 
     public void handleApproveDelivery(javafx.event.ActionEvent actionEvent) {
