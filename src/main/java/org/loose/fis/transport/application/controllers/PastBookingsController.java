@@ -75,13 +75,14 @@ public class PastBookingsController {
         ObservableList<TripRequest2>list= FXCollections.observableArrayList();
         for (TripRequest k:
              l) {
+            if(k.getName().equals(LoginController.customerName)){
             String a="Pending";
             if(k.getApproved()==0)
                 a="Denied";
             if(k.getApproved()==1)
                 a="Approved";
             list.add(new TripRequest2(k.getTrip().getVehicleType(),k.getTrip().getSpace(),k.getTrip().getDate(),k.getTrip().getTime(),k.getTrip().getPrice(),k.getTrip().getRoute(),a));
-        }
+        }}
         table.setItems(list);
     }
 
