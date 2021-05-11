@@ -1,5 +1,7 @@
 package org.loose.fis.transport.application.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,53 +10,59 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.loose.fis.transport.application.model.DeliveryRequest;
+import org.loose.fis.transport.application.model.TripRequest;
+import org.loose.fis.transport.application.model.TripRequest2;
+import org.loose.fis.transport.application.services.DeliveryRequestService;
+import org.loose.fis.transport.application.services.TripRequestService;
 
 import java.io.IOException;
 
 public class AllBookingsController {
     @FXML
-    private TableView<?> table;
+    private TableView<TripRequest2> table;
 
     @FXML
-    private TableColumn<?, ?> colVehicleType;
+    private TableColumn<TripRequest2, String> colVehicleType;
 
     @FXML
-    private TableColumn<?, ?> colSpace;
+    private TableColumn<TripRequest2, Integer> colSpace;
 
     @FXML
-    private TableColumn<?, ?> colDate;
+    private TableColumn<TripRequest2, String> colDate;
 
     @FXML
-    private TableColumn<?, ?> colTime;
+    private TableColumn<TripRequest2, String> colTime;
 
     @FXML
-    private TableColumn<?, ?> colPrice;
+    private TableColumn<TripRequest2, Integer> colPrice;
 
     @FXML
-    private TableColumn<?, ?> colRoute;
+    private TableColumn<TripRequest2, String> colRoute;
 
     @FXML
-    private TableColumn<?, ?> colStatus;
+    private TableColumn<TripRequest2, String> colStatus;
 
     @FXML
-    private TableView<?> table2;
+    private TableView<DeliveryRequest> table2;
 
     @FXML
-    private TableColumn<?, ?> colVehicleType2;
+    private TableColumn<DeliveryRequest, String> colVehicleType2;
 
     @FXML
-    private TableColumn<?, ?> colPickupAddress;
+    private TableColumn<DeliveryRequest, String> colPickupAddress;
 
     @FXML
-    private TableColumn<?, ?> colDeliveryAddress;
+    private TableColumn<DeliveryRequest, String> colDeliveryAddress;
 
     @FXML
-    private TableColumn<?, ?> colAdditionalInformation;
+    private TableColumn<DeliveryRequest, String> colAdditionalInformation;
 
     @FXML
-    private TableColumn<?, ?> colStatus2;
+    private TableColumn<DeliveryRequest, String> colStatus2;
 
     @FXML
     private Button backButton;
@@ -70,6 +78,41 @@ public class AllBookingsController {
 
     @FXML
     private Button approvedButton;
+
+    @FXML
+    private Button allButton;
+
+    @FXML
+    void handleAllButton(ActionEvent event) {
+        colVehicleType.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("vehicleType"));
+        colSpace.setCellValueFactory(new PropertyValueFactory<TripRequest2,Integer>("space"));
+        colDate.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("date"));
+        colTime.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("time"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<TripRequest2,Integer>("price"));
+        colRoute.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("route"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("approved"));
+
+        colVehicleType2.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("vehicleType2"));
+        colPickupAddress.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("pickupAddress"));
+        colDeliveryAddress.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("deliveryAddress"));
+        colAdditionalInformation.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("additionalInformation"));
+        colStatus2.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("status"));
+
+        ObservableList<TripRequest> l= TripRequestService.Lista();
+        ObservableList<TripRequest2>list= FXCollections.observableArrayList();
+        for (TripRequest k:
+                l) {
+            String a="Pending";
+            if(k.getApproved()==0)
+                a="Denied";
+            if(k.getApproved()==1)
+                a="Approved";
+            list.add(new TripRequest2(k.getTrip().getVehicleType(),k.getTrip().getSpace(),k.getTrip().getDate(),k.getTrip().getTime(),k.getTrip().getPrice(),k.getTrip().getRoute(),a));
+        }
+        table.setItems(list);
+
+        table2.setItems(DeliveryRequestService.Lista());
+    }
 
     @FXML
     void handleApprovedButton(ActionEvent event) {
@@ -96,5 +139,38 @@ public class AllBookingsController {
     @FXML
     void handlePendingButton(ActionEvent event) {
 
+    }
+
+    @FXML
+    public void initialize() {
+
+        colVehicleType.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("vehicleType"));
+        colSpace.setCellValueFactory(new PropertyValueFactory<TripRequest2,Integer>("space"));
+        colDate.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("date"));
+        colTime.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("time"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<TripRequest2,Integer>("price"));
+        colRoute.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("route"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<TripRequest2,String>("approved"));
+
+        colVehicleType2.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("vehicleType2"));
+        colPickupAddress.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("pickupAddress"));
+        colDeliveryAddress.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("deliveryAddress"));
+        colAdditionalInformation.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("additionalInformation"));
+        colStatus2.setCellValueFactory(new PropertyValueFactory<DeliveryRequest,String>("status"));
+
+        ObservableList<TripRequest> l= TripRequestService.Lista();
+        ObservableList<TripRequest2>list= FXCollections.observableArrayList();
+        for (TripRequest k:
+                l) {
+                String a="Pending";
+                if(k.getApproved()==0)
+                    a="Denied";
+                if(k.getApproved()==1)
+                    a="Approved";
+                list.add(new TripRequest2(k.getTrip().getVehicleType(),k.getTrip().getSpace(),k.getTrip().getDate(),k.getTrip().getTime(),k.getTrip().getPrice(),k.getTrip().getRoute(),a));
+            }
+        table.setItems(list);
+
+        table2.setItems(DeliveryRequestService.Lista());
     }
 }
