@@ -127,7 +127,14 @@ public class TripListCustomerController {
 
     @FXML
     void handleMyTripsButton(ActionEvent event) {
-
+        try {
+            Stage stage = (Stage) TEXT.getScene().getWindow();
+            Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("pastBookings.fxml"));
+            Scene scene = new Scene(viewStudentsRoot, 600, 400);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
