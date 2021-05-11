@@ -109,26 +109,6 @@ public class MeansOfTransportController {
         }
     }
 
-    @FXML
-    public void handleEditButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    public void handleLogoutButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    public void handleScheduleTripButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    public void handleSeeRequestsButton(ActionEvent event) {
-
-    }
-
     public void handleAddButton(javafx.event.ActionEvent actionEvent) {
         try {
             VehicleService.addVehicle(vehicleType.getText(), transportType.getText(), Integer.parseInt(space.getText()), Integer.parseInt(numberOfVehicles.getText()), Integer.parseInt(availableVehicles.getText()));
@@ -172,6 +152,14 @@ public class MeansOfTransportController {
     }
 
     public void handleDeliveriesAndTripsButton(javafx.event.ActionEvent actionEvent) {
+        try {
+            Stage stage = (Stage) TEXT.getScene().getWindow();
+            Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("allBookings.fxml"));
+            Scene scene = new Scene(viewStudentsRoot, 900, 700);
+            stage.setScene(scene);
+        } catch (IOException p) {
+            p.printStackTrace();
+        }
     }
 
     public void handleLogoutButton(javafx.event.ActionEvent actionEvent) {
