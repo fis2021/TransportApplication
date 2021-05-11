@@ -1,7 +1,10 @@
 package org.loose.fis.transport.application.model;
 
-public class DeliveryRequest {
+import org.dizitart.no2.objects.Id;
 
+public class DeliveryRequest {
+    @Id
+    private int id;
     private String pickupAddress;
     private String vehicleType;
     private String deliveryAddress;
@@ -11,21 +14,15 @@ public class DeliveryRequest {
 
     public DeliveryRequest(){}
 
-    public DeliveryRequest(String pickupAddress, String vehicleType, String deliveryAddress, String additionalInformation, String customerName) {
-        this.pickupAddress = pickupAddress;
-        this.vehicleType = vehicleType;
-        this.deliveryAddress = deliveryAddress;
-        this.additionalInformation = additionalInformation;
-        this.customerName = customerName;
-    }
 
-    public DeliveryRequest(String pickupAddress, String vehicleType, String deliveryAddress, String additionalInformation, String customerName, int approved) {
+    public DeliveryRequest(String pickupAddress, String vehicleType, String deliveryAddress, String additionalInformation, String customerName, int approved,int id) {
         this.pickupAddress = pickupAddress;
         this.vehicleType = vehicleType;
         this.deliveryAddress = deliveryAddress;
         this.additionalInformation = additionalInformation;
         this.customerName = customerName;
         this.approved = approved;
+        this.id=id;
     }
 
     public int getApproved() {
@@ -74,5 +71,15 @@ public class DeliveryRequest {
 
     public void setAdditionalInformation(String additionalInformation) {
         this.additionalInformation = additionalInformation;
+    }
+
+    @Override
+    public String toString() {
+        return "DeliveryRequest:\n" +
+                "Pickup address " + pickupAddress +
+                "\nVehicle type " + vehicleType +
+                "\nDelivery address " + deliveryAddress +
+                "\nAdditional information " + additionalInformation +
+                "\nCustomer name " + customerName;
     }
 }

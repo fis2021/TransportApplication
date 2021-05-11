@@ -34,8 +34,8 @@ public class TripRequest {
 
     @Override
     public String toString() {
-        return "TripRequest:" +
-                "trip: " + trip.toString() +
+        return "TripRequest:\n" +
+                trip.toString() +
                 "name: " + name;
     }
 

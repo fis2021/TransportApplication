@@ -35,10 +35,20 @@ public class DeliveryRequestService {
 
     public static void addRequest(String pickupAddress, String vehicleType, String deliveryAddress, String additionalInformation, String name) throws Exception {
         try {
-            deliveriesRepository.insert(new DeliveryRequest(pickupAddress, vehicleType, deliveryAddress, additionalInformation, name,2));
+            deliveriesRepository.insert(new DeliveryRequest(pickupAddress, vehicleType, deliveryAddress, additionalInformation, name,2,DeliveryRequestService.Lista().toArray().length+100));
         }catch(UniqueConstraintException e)
         {
             throw new Exception();
         }
     }
+    public static void Approve()
+    {
+        for (DeliveryRequest k:
+                deliveriesRepository.find()) {
+            if(k.getApproved()==2){
+                k.setApproved(1);
+                deliveriesRepository.update(k); break;
+            }}
+    }
+
 }

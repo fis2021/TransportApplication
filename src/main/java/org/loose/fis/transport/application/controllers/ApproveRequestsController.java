@@ -8,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.loose.fis.transport.application.model.DeliveryRequest;
 import org.loose.fis.transport.application.model.TripRequest;
+import org.loose.fis.transport.application.services.DeliveryRequestService;
 import org.loose.fis.transport.application.services.TripRequestService;
 
 import java.awt.event.ActionEvent;
@@ -51,6 +53,19 @@ public class ApproveRequestsController {
         }
         if(ok==false)
             trips.setText("No trip requests");
+        ok=true;
+        ObservableList<DeliveryRequest>l2= DeliveryRequestService.Lista();
+        for (DeliveryRequest k:
+                l2) {
+            if(k.getApproved()==2)
+            {
+                ok=true;
+                deliveries.setText(k.toString());
+                break;
+            }
+        }
+        if(ok==false)
+            deliveries.setText("No delivery requests");
     }
 
     public void handleApproveTripButton(javafx.event.ActionEvent actionEvent) {
@@ -95,6 +110,22 @@ public class ApproveRequestsController {
     }
 
     public void handleApproveDelivery(javafx.event.ActionEvent actionEvent) {
+        ObservableList<DeliveryRequest>l= DeliveryRequestService.Lista();
+        boolean ok=false;
+        DeliveryRequestService.Approve();
+        l=DeliveryRequestService.Lista();
+
+        for (DeliveryRequest k:
+                l) {
+            if(k.getApproved()==2)
+            {
+                ok=true;
+                deliveries.setText(k.toString());
+                break;
+            }
+        }
+        if(ok==false)
+            deliveries.setText("No delivery requests");
     }
 
     public void handleBackButton(javafx.event.ActionEvent actionEvent) {
