@@ -39,7 +39,16 @@ public class TripRequestService {
                 requestsRepository.find()) {
             if(k.getApproved()==2){
                 k.setApproved(1);
-                requestsRepository.update(k);
+                requestsRepository.update(k); break;
+            }}
+    }
+    public static void Deny()
+    {
+        for (TripRequest k:
+                requestsRepository.find()) {
+            if(k.getApproved()==2){
+                k.setApproved(0);
+                requestsRepository.update(k); break;
             }}
     }
     public static void addRequest(Trip r, String name) throws UniqueConstraintException {
