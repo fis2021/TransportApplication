@@ -16,7 +16,6 @@ import java.util.Objects;
 import static org.loose.fis.transport.application.services.FileSystemService.getPathToFile;
 
 public class VehicleService {
-
     private static ObjectRepository<Vehicle> vehicleRepository;
 
     public static void initDatabase() {

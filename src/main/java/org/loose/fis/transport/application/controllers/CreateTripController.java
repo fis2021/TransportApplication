@@ -153,7 +153,14 @@ public class CreateTripController {
 
     @FXML
     void handleSeeRequestsButton(ActionEvent event) {
-
+        try {
+            Stage stage = (Stage) TEXT.getScene().getWindow();
+            Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("approveRequests.fxml"));
+            Scene scene = new Scene(viewStudentsRoot, 900, 700);
+            stage.setScene(scene);
+        } catch (IOException p) {
+            p.printStackTrace();
+        }
     }
 
 }

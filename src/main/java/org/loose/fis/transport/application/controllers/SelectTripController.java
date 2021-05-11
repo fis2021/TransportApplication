@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
+import org.dizitart.no2.exceptions.UniqueConstraintException;
 import org.loose.fis.transport.application.services.TripRequestService;
 
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class SelectTripController {
         }
     }
 
-    public void handleRequestSpotButton(javafx.event.ActionEvent actionEvent) throws Exception {
+    public void handleRequestSpotButton(javafx.event.ActionEvent actionEvent) throws UniqueConstraintException {
         TripRequestService.addRequest(TripListCustomerController.t, LoginController.customerName);
         //someText.setText(TripListCustomerController.t.toString() + " " +LoginController.customerName );
         try{
