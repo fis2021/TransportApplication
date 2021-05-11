@@ -27,6 +27,13 @@ public class TripRequest {
         return approved;
     }
 
+    @Override
+    public String toString() {
+        return "TripRequest:" +
+                "trip: " + trip.toString() +
+                "name: " + name;
+    }
+
     public Trip getTrip() {
         return trip;
     }

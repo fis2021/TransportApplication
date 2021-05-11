@@ -1,5 +1,6 @@
 package org.loose.fis.transport.application.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.loose.fis.transport.application.model.TripRequest;
+import org.loose.fis.transport.application.services.TripRequestService;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -33,6 +36,18 @@ public class ApproveRequestsController {
 
     @FXML
     private Button backButton;
+
+    public void initialize() {
+        ObservableList<TripRequest>l= TripRequestService.Lista();
+        for (TripRequest k:
+             l) {
+            if(k.getApproved()==2)
+            {
+                trips.setText(k.toString());
+                break;
+            }
+        }
+    }
 
     public void handleApproveTripButton(javafx.event.ActionEvent actionEvent) {
     }
