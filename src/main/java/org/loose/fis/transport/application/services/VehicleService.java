@@ -17,14 +17,21 @@ import static org.loose.fis.transport.application.services.FileSystemService.get
 
 public class VehicleService {
     private static ObjectRepository<Vehicle> vehicleRepository;
+    private static Nitrite database;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("vehicles.db").toFile())
                 .openOrCreate("test", "test");
 
         vehicleRepository = database.getRepository(Vehicle.class);
     }
+
+    public static Nitrite getdatab()
+    {
+        return database;
+    }
+
     public static void addVehicle(String vehicleType, String transportType, int space, int numberOfVehicles, int availableVehicles) throws VehicleExists {
         try {
             vehicleRepository.insert(new Vehicle(vehicleType, transportType, space, numberOfVehicles, availableVehicles));
