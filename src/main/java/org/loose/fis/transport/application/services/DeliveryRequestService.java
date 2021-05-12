@@ -14,13 +14,19 @@ import static org.loose.fis.transport.application.services.FileSystemService.get
 
 public class DeliveryRequestService {
     private static ObjectRepository<DeliveryRequest> deliveriesRepository;
+    private static Nitrite database;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("deliveryRequests.db").toFile())
                 .openOrCreate("test", "test");
 
         deliveriesRepository = database.getRepository(DeliveryRequest.class);
+    }
+
+    public static Nitrite getdatab()
+    {
+        return database;
     }
 
     public static ObservableList<DeliveryRequest> Lista()
