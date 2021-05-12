@@ -3,13 +3,13 @@ package org.loose.fis.transport.application.model;
 import org.dizitart.no2.objects.Id;
 
 public class Trip {
-    @Id
     private String vehicleType;
     private int space;
     private String date;
     private String time;
     private int price;
     private String route;
+    @Id
     private int id;
 
     public Trip()
