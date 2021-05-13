@@ -9,7 +9,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="900" prefWidth="900" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.transport.application.controllers.MeansOfTransportController">
+<?import javafx.scene.layout.GridPane?>
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="900" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.transport.application.controllers.MeansOfTransportController">
    <children>
       <TableView fx:id="table" layoutX="285.0" layoutY="166.0" prefHeight="478.0" prefWidth="532.0">
         <columns>
@@ -21,16 +22,16 @@
             <TableColumn fx:id="colAvailableVehicles" prefWidth="143.0" text="Available vehicles" />
         </columns>
       </TableView>
-      <TextField fx:id="vehicleType" layoutX="59.0" layoutY="201.0" />
-      <TextField fx:id="transportType" layoutX="59.0" layoutY="259.0" />
-      <TextField fx:id="space" layoutX="59.0" layoutY="317.0" />
+      <TextField fx:id="vehicleType" id="vehicletype" layoutX="59.0" layoutY="201.0" />
+      <TextField fx:id="transportType" id="transporttype" layoutX="59.0" layoutY="259.0" />
+      <TextField fx:id="space" id="space" layoutX="59.0" layoutY="317.0" />
       <Label layoutX="59.0" layoutY="168.0" prefHeight="33.0" prefWidth="125.0" text="Vehicle type">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="numberOfVehicles" layoutX="59.0" layoutY="376.0" />
-      <TextField fx:id="availableVehicles" layoutX="59.0" layoutY="434.0" />
+      <TextField fx:id="numberOfVehicles" id="number" layoutX="59.0" layoutY="376.0" />
+      <TextField fx:id="availableVehicles" id="available" layoutX="59.0" layoutY="434.0" />
       <Label layoutX="59.0" layoutY="226.0" prefHeight="33.0" prefWidth="149.0" text="Transport type">
          <font>
             <Font size="18.0" />
@@ -51,13 +52,13 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="addButton" layoutX="59.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="45.0" prefWidth="149.0" text="Add" />
-      <Button fx:id="editButton" layoutX="59.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="45.0" prefWidth="149.0" text="Edit" />
-      <Button fx:id="deleteButton" layoutX="59.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="45.0" prefWidth="149.0" text="Delete" />
-      <Button fx:id="deliveriesAndTripsButton" layoutX="426.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDeliveriesAndTripsButton" prefHeight="45.0" prefWidth="119.0" text="Deliveries and trips" />
-      <Button fx:id="logoutButton" layoutX="698.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="45.0" prefWidth="119.0" text="Logout" />
-      <Button fx:id="scheduleTripButton" layoutX="565.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleScheduleTripButton" prefHeight="45.0" prefWidth="119.0" text="Schedule trip" />
-      <Button fx:id="seeRequestsButton" layoutX="285.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleSeeRequestsButton" prefHeight="45.0" prefWidth="119.0" text="See requests" />
-      <Text fx:id="TEXT" layoutX="59.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0" />
+      <Button fx:id="addButton" id="add" layoutX="59.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="45.0" prefWidth="149.0" text="Add" />
+      <Button fx:id="editButton" id="edit" layoutX="59.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="45.0" prefWidth="149.0" text="Edit" />
+      <Button fx:id="deleteButton" id="delete" layoutX="59.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="45.0" prefWidth="149.0" text="Delete" />
+      <Button fx:id="deliveriesAndTripsButton" id="deliveriesandtrips" layoutX="426.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDeliveriesAndTripsButton" prefHeight="45.0" prefWidth="119.0" text="Deliveries and trips" />
+      <Button fx:id="logoutButton" id="logout" layoutX="698.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="45.0" prefWidth="119.0" text="Logout" />
+      <Button fx:id="scheduleTripButton" id="scheduletrip" layoutX="565.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleScheduleTripButton" prefHeight="45.0" prefWidth="119.0" text="Schedule trip" />
+      <Button fx:id="seeRequestsButton" id="seerequests" layoutX="285.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleSeeRequestsButton" prefHeight="45.0" prefWidth="119.0" text="See requests" />
+      <Text fx:id="TEXT" id="TEXT" layoutX="59.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0" />
    </children>
 </AnchorPane>
