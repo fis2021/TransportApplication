@@ -6,12 +6,12 @@
 
 <AnchorPane prefHeight="900" prefWidth="900" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.transport.application.controllers.ApproveRequestsController">
    <children>
-      <Button fx:id="approveTripButton" layoutX="235.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleApproveTripButton" prefHeight="47.0" prefWidth="85.0" text="Approve" />
-      <Button fx:id="denyTripButton" layoutX="235.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleDenyTripButton" prefHeight="47.0" prefWidth="85.0" text="Deny" />
-      <Text fx:id="trips" layoutX="5.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="178.8033676147461" />
-      <Text fx:id="deliveries" layoutX="368.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="178.8033676147461" />
-      <Button fx:id="denyDelivery" layoutX="581.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleDenyDelivery" prefHeight="47.0" prefWidth="85.0" text="Deny" />
-      <Button fx:id="approveDelivery" layoutX="581.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleApproveDelivery" prefHeight="47.0" prefWidth="85.0" text="Approve" />
-      <Button fx:id="backButton" layoutX="325.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="47.0" prefWidth="85.0" text="Home" />
+      <Button fx:id="approveTripButton" id="approveTripButton" layoutX="235.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleApproveTripButton" prefHeight="47.0" prefWidth="85.0" text="Approve" />
+      <Button fx:id="denyTripButton" id="denyTripButton" layoutX="235.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleDenyTripButton" prefHeight="47.0" prefWidth="85.0" text="Deny" />
+      <Text fx:id="trips" id="textTrips" layoutX="5.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="178.8033676147461" />
+      <Text fx:id="deliveries" id="textDeliveries" layoutX="368.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="178.8033676147461" />
+      <Button fx:id="denyDelivery" id="denyDelivery" layoutX="581.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleDenyDelivery" prefHeight="47.0" prefWidth="85.0" text="Deny" />
+      <Button fx:id="approveDelivery" id="approveDelivery" layoutX="581.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleApproveDelivery" prefHeight="47.0" prefWidth="85.0" text="Approve" />
+      <Button fx:id="backButton" id="backButton" layoutX="325.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="47.0" prefWidth="85.0" text="Home" />
    </children>
 </AnchorPane>
