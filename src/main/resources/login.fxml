@@ -17,18 +17,18 @@
 
     <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
-    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <TextField fx:id="usernameField" id="username" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
     <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <PasswordField fx:id="passwordField" id="password" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button onAction="#handleLoginButtonAction" text="Login"/>
+        <Button onAction="#handleLoginButtonAction" id="loginButton" text="Login"/>
     </HBox>
     <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="4">
-        <Button onAction="#handleRegisterButton" text="Register"/>
+        <Button onAction="#handleRegisterButton" id="registerButton" text="Register"/>
     </HBox>
 
-    <Text fx:id="loginMessage" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    <Text fx:id="loginMessage" id="loginMessage" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 </GridPane>
