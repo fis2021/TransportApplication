@@ -34,6 +34,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="bookDelivery" layoutX="355.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleBookDeliveryButton" prefHeight="45.0" prefWidth="119.0" text="Book delivery" />
+      <Button fx:id="bookDelivery" id="bookDeliveryButton" layoutX="355.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleBookDeliveryButton" prefHeight="45.0" prefWidth="119.0" text="Book delivery" />
    </children>
 </AnchorPane>
