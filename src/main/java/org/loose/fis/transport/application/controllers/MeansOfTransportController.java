@@ -92,22 +92,6 @@ public class MeansOfTransportController {
         table.setItems(VehicleService.Lista());
     }
 
-    @FXML
-    public void handleDeleteButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    public void handleDeliveriesAndTripsButton(ActionEvent event) {
-        try {
-            Stage stage = (Stage) TEXT.getScene().getWindow();
-            Parent viewStudentsRoot = FXMLLoader.load(getClass().getClassLoader().getResource("allBookings.fxml"));
-            Scene scene = new Scene(viewStudentsRoot, 900, 700);
-            stage.setScene(scene);
-        } catch (IOException p) {
-            p.printStackTrace();
-        }
-    }
 
     public void handleAddButton(javafx.event.ActionEvent actionEvent) {
         try {

@@ -15,13 +15,18 @@ import static org.loose.fis.transport.application.services.FileSystemService.get
 
 public class TripRequestService {
     private static ObjectRepository<TripRequest> requestsRepository;
+    private static Nitrite database;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("tripRequesturi.db").toFile())
                 .openOrCreate("test", "test");
 
         requestsRepository = database.getRepository(TripRequest.class);
+    }
+    public static Nitrite getdatab()
+    {
+        return database;
     }
 
     public static ObservableList<TripRequest> Lista()
